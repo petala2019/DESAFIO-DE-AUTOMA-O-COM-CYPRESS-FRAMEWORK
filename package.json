@@ -1,0 +1,23 @@
+{
+  "name": "desafio-cypress-serverest",
+  "version": "1.0.0",
+  "description": "Testes automatizados E2E (frontend) e de API da aplicação ServeRest com Cypress",
+  "private": true,
+  "scripts": {
+    "cy:open": "cypress open",
+    "test": "cypress run",
+    "test:frontend": "cypress run --spec \"cypress/e2e/frontend/**/*.cy.js\"",
+    "test:api": "cypress run --spec \"cypress/e2e/api/**/*.cy.js\"",
+    "lint": "eslint cypress cypress.config.js"
+  },
+  "author": "Petala Silva",
+  "license": "MIT",
+  "devDependencies": {
+    "@faker-js/faker": "^10.6.0",
+    "ajv": "^8.20.0",
+    "cypress": "^13.17.0",
+    "cypress-mochawesome-reporter": "^5.0.0",
+    "eslint": "^8.57.1",
+    "eslint-plugin-cypress": "^3.6.0"
+  }
+}

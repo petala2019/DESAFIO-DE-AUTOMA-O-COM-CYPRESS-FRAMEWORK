@@ -1,0 +1,14 @@
+{
+  "root": true,
+  "env": { "node": true, "es2022": true },
+  "parserOptions": { "ecmaVersion": "latest", "sourceType": "module" },
+  "plugins": ["cypress"],
+  "extends": ["eslint:recommended", "plugin:cypress/recommended"],
+  "rules": {
+    "cypress/no-unnecessary-waiting": "error",
+    "cypress/unsafe-to-chain-command": "error"
+  },
+  "overrides": [
+    { "files": ["cypress/**/*.js"], "env": { "mocha": true } }
+  ]
+}
