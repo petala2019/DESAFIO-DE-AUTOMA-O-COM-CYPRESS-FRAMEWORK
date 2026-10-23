@@ -1,0 +1,46 @@
+name: Testes Cypress
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+
+  testes:
+    needs: lint
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        suite: [api, frontend]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - name: Executar testes (${{ matrix.suite }})
+        uses: cypress-io/github-action@v6
+        with:
+          command: npm run test:${{ matrix.suite }}
+      - name: Publicar relatório
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: relatorio-${{ matrix.suite }}
+          path: |
+            cypress/reports
+            cypress/screenshots
+          if-no-files-found: ignore
