@@ -1,0 +1,8 @@
+{
+  "cadastroSucesso": "Cadastro realizado com sucesso",
+  "loginSucesso": "Login realizado com sucesso",
+  "loginInvalido": "Email e/ou senha inválidos",
+  "emailEmUso": "Este email já está sendo usado",
+  "tokenAusente": "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais",
+  "rotaAdmin": "Rota exclusiva para administradores"
+}
